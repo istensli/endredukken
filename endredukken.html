@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endre dukken</title>
+
+    <style>
+
+        #page{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            background-color: grey;
+            
+        }
+        #header{
+            color: white;
+            background-color: black;
+            width: 400px;
+            height: 50px;
+            text-align: center;
+            font-size: larger;
+        }
+        #head-div, #body-div, #legs-div{
+            display: flex;
+            flex-direction: row;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+
+    <div id="page">
+        <div id="header">Hode, kropp og ben</div>
+        <div id="head-div">
+            <button onclick="swipeHead('left')">←</button>
+            <img id="head-pic" src="face1.png" alt="Hode" class="image">
+            <button onclick="swipeHead('right')">→</button>
+         </div>
+        <div id="body-div">
+            <button onclick="swipeBody('left')">←</button>
+            <img id="body-pic" src="bod1.png" alt="Kropp" class="image">
+            <button onclick="swipeBody('right')">→</button>
+         </div>
+        <div id="legs-div">
+            <button onclick="swipeLegs('left')">←</button>
+            <img id="legs-pic" src="legs1.png" alt="Ben" class="image">
+            <button onclick="swipeLegs('right')">→</button>
+        </div>
+    </div>
+
+    <script>
+        let headCounter = 1;
+        let bodyCounter = 1;
+        let legsCounter = 1;
+
+        function swipeLeft(tagIdToChange){
+            let imageTag = document.getElementById(tagIdToChange);
+            imageTag.src = ``;
+
+
+        }
+
+        function swipeHead(way){
+            if (way == 'left'){
+                headCounter--;
+                if(headCounter < 1){
+                    headCounter = 4;
+                }
+            }
+            else if(way == 'right'){
+                headCounter++;
+                if(headCounter > 4){
+                    headCounter = 1;
+                }
+                
+            }
+            else{
+                console.log('Invalid parametre in function swipeHead()');
+            }
+            showPictures();
+
+
+
+        }
+
+        function swipeBody(way){
+            if (way == 'left'){
+                bodyCounter--;
+                if(bodyCounter < 1){
+                    bodyCounter = 4;
+                }
+            }
+            else if(way == 'right'){
+                bodyCounter++;
+                if(bodyCounter > 4){
+                    bodyCounter = 1;
+                }
+                
+            }
+            else{
+                console.log('Invalid parametre in function swipeBody()');
+            }
+            showPictures();
+
+
+
+        }
+
+        function swipeLegs(way){
+            if (way == 'left'){
+                legsCounter--;
+                if(legsCounter < 1){
+                    legsCounter = 4;
+                }
+            }
+            else if(way == 'right'){
+                legsCounter++;
+                if(legsCounter > 4){
+                    legsCounter = 1;
+                }
+                
+            }
+            else{
+                console.log('Invalid parametre in function swipeLegs()');
+            }
+            showPictures();
+
+
+
+        }
+
+
+
+
+
+
+        function showPictures(){
+            let headPic = document.getElementById('head-pic');
+            let bodyPic = document.getElementById('body-pic');
+            let legsPic = document.getElementById('legs-pic');
+
+            headPic.src = `face${headCounter}.png`;
+            bodyPic.src = `bod${bodyCounter}.png`;
+            legsPic.src = `legs${legsCounter}.png`;
+
+
+        }
+
+    </script>
+
+
+
+
+    
+</body>
+</html>
